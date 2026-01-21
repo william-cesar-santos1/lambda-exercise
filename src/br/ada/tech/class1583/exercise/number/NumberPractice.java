@@ -9,26 +9,32 @@ public class NumberPractice {
 
     public List<Integer> numbersLessThan5() {
         // Filtre todos os números que são menores que 5
-        var stream = Arrays.stream(NUMBERS);
-        return null;
+        return Arrays.stream(NUMBERS)
+                .filter(number -> number < 5)
+                .collect(Collectors.toList());
     }
 
     public Set<Integer> removeRepeatNumbers() {
         // Remova os números repetidos
-        var stream = Arrays.stream(NUMBERS);
-        return null;
+        return Arrays.stream(NUMBERS)
+                .collect(Collectors.toSet());
     }
 
     public Integer sumAllNumbers() {
         // Calcule a soma total dos números.
-        var stream = Arrays.stream(NUMBERS);
-        return null;
+//        Arrays.stream(NUMBERS)
+//                .collect(Collectors.summingInt(Integer::intValue));
+        return Arrays.stream(NUMBERS)
+                .reduce((first, second) -> first + second)
+                //.reduce(0, Integer::sum);
+                .get();
     }
 
     public Integer sumNumbersWithoutRepeats() {
         // Some todos os números, porém não utilize os repetidos
-        var stream = Arrays.stream(NUMBERS);
-        return null;
+        return Arrays.stream(NUMBERS)
+                .distinct()
+                .reduce(0, Integer::sum);
     }
 
     public Map<Integer, Long> countRepeatedNumber() {
