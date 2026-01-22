@@ -40,8 +40,20 @@ public class NumberPractice {
     public Map<Integer, Long> countRepeatedNumber() {
         // Conte quantas vezes cada número aparece na lista. Exemplo de retorno: 4 -> 2, 1 -> 3
         // Exercício extra: tente fazer isso utilizando Collectors.groupingBy
-        var stream = Arrays.stream(NUMBERS);
-        return null;
+//        var counter = new HashMap<Integer, Long>();
+//        for (var number : NUMBERS) {
+//            if (counter.containsKey(number)) {
+//                counter.put(number, counter.get(number) + 1);
+//            } else {
+//                counter.put(number, 1L);
+//            }
+//        }
+//        return counter;
+        return Arrays.stream(NUMBERS)
+                .collect(Collectors.groupingBy(
+                        number -> number, // O que é o agrupador(chave de agrupamento)
+                        Collectors.counting() // Como eu quero agrupar(valor associado a chave)
+                ));
     }
 
 }
